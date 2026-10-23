@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- True Gig Pay sitemap.
-     PLACEHOLDER DOMAIN: replace https://truegigpay.pages.dev with the real
+     PLACEHOLDER DOMAIN: replace https://truegigpay.cfoltz34.workers.dev with the real
      deployed domain after launch, then submit this file's URL in
      Google Search Console / Bing Webmaster Tools. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://truegigpay.pages.dev/</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://truegigpay.pages.dev/methodology.html</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/methodology.html</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truegigpay.pages.dev/prop-22.html</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/prop-22.html</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truegigpay.pages.dev/nyc-pay.html</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/nyc-pay.html</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truegigpay.pages.dev/irs-mileage.html</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/irs-mileage.html</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truegigpay.pages.dev/about.html</loc>
+    <loc>https://truegigpay.cfoltz34.workers.dev/about.html</loc>
     <lastmod>2026-10-22</lastmod>
     <priority>0.5</priority>
   </url>

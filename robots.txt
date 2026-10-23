@@ -4,4 +4,4 @@ Allow: /
 
 # Replace the domain below with the real one after deployment,
 # and keep it in sync with sitemap.xml.
-Sitemap: https://truegigpay.pages.dev/sitemap.xml
+Sitemap: https://truegigpay.cfoltz34.workers.dev/sitemap.xml
