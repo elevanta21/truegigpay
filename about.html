@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About True Gig Pay — What This Site Is, and Its Privacy Promise</title>
+<meta name="description" content="True Gig Pay is a free, no-account calculator that shows gig drivers their true hourly rate after vehicle costs and self-employment tax. All math happens in your browser; no data is collected.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">T$</span> True Gig Pay</a>
+    <p class="brand-tag">What gig drivers actually keep — after miles, gas, and taxes.</p>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>About True Gig Pay</h1>
+  <p class="lede">True Gig Pay exists because the number in your delivery or rideshare app isn't your pay — it's your revenue. Your pay is what's left after the miles and the tax bill, and almost nobody shows drivers that number honestly.</p>
+
+  <h2>What this site does</h2>
+  <ul>
+    <li>Computes your <strong>true hourly rate</strong> after vehicle costs — using the real, dated IRS mileage rates (including 2026's unusual mid-year split) or your own actual costs.</li>
+    <li>Estimates your <strong>self-employment tax</strong> the way Schedule SE actually works, and turns it into a weekly/quarterly set-aside you can act on.</li>
+    <li>Checks your pay against <strong>legal pay floors</strong> where they exist — California Prop 22, New York City, Seattle, and Washington rideshare — with every rate sourced to the government body that published it.</li>
+    <li>Scores a single offer in seconds, so "is this delivery worth it?" gets a math answer instead of a vibe.</li>
+  </ul>
+  <p>True Gig Pay is run as an independent, brand-only project. It is not affiliated with DoorDash, Uber, Instacart, Lyft, or any other platform, and no platform endorses it. Platform names are used only to describe who the tools are for.</p>
+
+  <h2>What it deliberately doesn't do</h2>
+  <ul>
+    <li><strong>It never invents platform pay rates.</strong> Platforms don't publish rate cards, so any tool that tells you "DoorDash pays $X per order" without your data is guessing. Here, every input is yours.</li>
+    <li><strong>It doesn't give tax or legal advice.</strong> The outputs are estimates built on published formulas, with the <a href="methodology.html">methodology</a> shown in full. Your taxes and any pay dispute deserve a professional or the enforcing agency.</li>
+    <li><strong>It doesn't promise earnings.</strong> Gig pay varies by market, week, and driver. This site does arithmetic, not forecasts.</li>
+  </ul>
+
+  <h2>Privacy — the whole policy</h2>
+  <p>All calculations happen <strong>in your browser</strong>, on your device. The numbers you type are never sent to a server, never stored in a database, and never saved between visits — this site uses no accounts, no cookies, no analytics, and no browser storage (not even localStorage) in its current version. Close the tab and your figures are gone. If that ever changes, this page will say so plainly, in advance.</p>
+
+  <h2>Corrections &amp; contact</h2>
+  <p>Rates on this site are checked against official sources and every page carries a "rates verified" date. If you spot an outdated figure or a mistake, corrections are welcome through the project's public repository issue tracker (linked from the deployed site) — please cite the official source for the corrected figure, since that's the standard every number here has to meet. There is no contact form: with no backend and no data collection, there's nothing for a form to send to.</p>
+
+  <h2>Keeping the rates current</h2>
+  <p>The constants behind the tool change on a published calendar: IRS mileage each December (and rarely mid-year, as in 2026), NYC's rate each April 1, and California/Washington rates each January 1. The site is updated on those dates, and the <a href="methodology.html">methodology page</a> always shows the current constants, their sources, and when they were last verified.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html">About &amp; Privacy</a>
+    </nav>
+    <p>True Gig Pay — estimates only; not tax or legal advice. Rates verified October 22, 2026.</p>
+  </div>
+</footer>
+</body>
+</html>

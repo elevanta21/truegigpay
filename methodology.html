@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology — How True Gig Pay Calculates Your True Hourly Rate</title>
+<meta name="description" content="Every formula and official rate behind True Gig Pay: IRS 2026 standard mileage (72.5¢/76¢), self-employment tax with the $184,500 Social Security cap, CA Prop 22, NYC, Seattle and Washington pay floors — with sources and a last-verified date.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">T$</span> True Gig Pay</a>
+    <p class="brand-tag">What gig drivers actually keep — after miles, gas, and taxes.</p>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html" aria-current="page">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>Methodology</h1>
+  <p class="lede">Every number True Gig Pay produces comes from the formulas and official rates on this page. Nothing is guessed, and no platform pay rate is ever invented — platforms don't publish rate cards, so the calculator works only from totals you enter.</p>
+  <p><strong>Rates last verified: October 22, 2026.</strong></p>
+
+  <h2>True hourly rate</h2>
+  <div class="formula">
+    Gross $/hr = gross pay ÷ total hours<br>
+    Net = gross pay − vehicle cost<br>
+    True net $/hr = net ÷ total hours (and, if you provide it, ÷ engaged hours)
+  </div>
+  <p><strong>Total hours</strong> is all the time you worked, including waiting between offers. <strong>Engaged hours</strong> is time actively on a delivery or trip. Both figures matter: apps advertise something close to the engaged number, while your life is paid at the total-hours number. Pay laws, below, are written on engaged time.</p>
+
+  <h2>Vehicle cost — IRS standard mileage mode</h2>
+  <p>The IRS standard mileage rate is its all-in estimate of what a mile of driving costs (fuel, maintenance, tires, insurance, depreciation). For tax year 2026 the rate is not one number but two:</p>
+  <table class="content-table">
+    <thead><tr><th scope="col">Period</th><th scope="col">Rate</th><th scope="col">Source</th></tr></thead>
+    <tbody>
+      <tr><td>Jan 1 – Jun 30, 2026</td><td>72.5¢ per mile</td><td>IRS Notice 2026-10 / IR-2025-128; IRS "Standard mileage rates" page</td></tr>
+      <tr><td>Jul 1 – Dec 31, 2026</td><td>76¢ per mile</td><td>IRS mid-year increase, IR-2026-29</td></tr>
+    </tbody>
+  </table>
+  <p>If your work period sits inside one half of the year, all miles use that half's rate. If it crosses July 1, the calculator splits your miles in proportion to how many of the period's days fall on each side of July 1. That's an approximation — for taxes, what matters is when each mile was actually driven — but it's the honest estimate available from period totals. More: <a href="irs-mileage.html">the 2026 two-rate mileage guide</a>.</p>
+
+  <h2>Vehicle cost — actual-cost mode</h2>
+  <div class="formula">Fuel cost = (miles ÷ your MPG) × fuel price per gallon<br>Vehicle cost = fuel cost + other costs you enter</div>
+  <p>This mode counts only what you tell it. It will usually be lower than the IRS rate because it leaves out depreciation, insurance, and wear unless you add them under "other costs."</p>
+
+  <h2>Self-employment tax estimate</h2>
+  <div class="formula">
+    Taxable base = 92.35% × net profit (gross − vehicle cost)<br>
+    Social Security part = 12.4% × taxable base, but only until your year's Social Security wages reach $184,500<br>
+    Medicare part = 2.9% × taxable base (no cap)<br>
+    SE tax = the two parts added
+  </div>
+  <p>This follows the IRS Schedule SE method: the 15.3% combined rate applies to 92.35% of net self-employment income, and the 12.4% Social Security portion stops at the annual wage base — <strong>$184,500 for 2026</strong> (Social Security Administration). If you enter W-2 or other SE wages for the year, the calculator reduces the Social Security portion accordingly. There is no SE tax when net profit is zero or negative.</p>
+  <p><strong>"Set aside" figures</strong> scale this period's SE tax to a week (× 7 ÷ period days) and to a quarter (× 91.25 ÷ period days) so you can pace quarterly estimated payments. They assume this period is typical for you.</p>
+  <p><strong>What this module does not do:</strong> it does not estimate your <em>income</em> tax. That depends on filing status, deductions (including the deduction for half of SE tax), other income, and credits — too much of your personal tax picture for a no-data-collection tool. The take-home summary is therefore labeled "before income tax." Quarterly estimated payments normally cover both SE tax and income tax, so most drivers set aside more than the SE figure alone; a tax professional can pin down your percentage.</p>
+
+  <h2>Pay-floor checks</h2>
+  <p>Each floor is an estimate for the engaged hours and miles you enter, shown for comparison against what you were paid for the same block <em>before tips</em> (tips do not count toward these minimums). These are informational checks, not legal determinations.</p>
+  <table class="content-table">
+    <thead><tr><th scope="col">Place</th><th scope="col">Formula used</th><th scope="col">Source &amp; effective dates</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>California — Prop 22</td>
+        <td>120% × applicable minimum wage × engaged hours + $0.37 × engaged miles. Statewide wage $16.90 for 2026 unless you enter a higher local wage.</td>
+        <td>Cal. Bus. &amp; Prof. Code §7453; CA DIR minimum wage ($16.90, 2026); per-mile amount for 2026 per CA State Treasurer.</td>
+      </tr>
+      <tr>
+        <td>New York City — delivery</td>
+        <td>$22.13 × engaged (trip) hours.</td>
+        <td>NYC Department of Consumer and Worker Protection (DCWP) minimum pay standard, effective April 1, 2026; adjusted each April.</td>
+      </tr>
+      <tr>
+        <td>Seattle, WA — app-based work</td>
+        <td>Greater of ($0.47 × engaged minutes + $0.80 × engaged miles) or ($5.34 × offers), using the offers count you enter.</td>
+        <td>Seattle App-Based Worker Minimum Payment Ordinance (SMC 8.37), Seattle Office of Labor Standards, 2026 amounts. The ordinance applies the test per offer; applying it to a whole block is an approximation.</td>
+      </tr>
+      <tr>
+        <td>Washington — rideshare (TNC)</td>
+        <td>Trips starting in Seattle: greater of ($0.70 × passenger minutes + $1.63 × passenger miles) or $6.12 × trips. Outside Seattle: greater of ($0.40 × minutes + $1.38 × miles) or $3.55 × trips.</td>
+        <td>RCW 49.46.300 minimum compensation rates published by Washington State Dept. of Labor &amp; Industries (L&amp;I), effective January 1, 2026. Applies to passenger platform time/miles, per trip; block totals are an approximation.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Offer quick-check</h2>
+  <div class="formula">
+    Gross $/hr = offer pay ÷ (minutes ÷ 60)<br>
+    $/mile = offer pay ÷ miles<br>
+    Net $/hr = (offer pay − miles × IRS rate for today's date) ÷ (minutes ÷ 60)
+  </div>
+  <p>The verdict line bands the net $/hr: $25+ "strong," $18–$25 "decent," $12–$18 "marginal," under $12 "poor." Those bands are this site's rough guide, disclosed here so you can judge them — the $/hr and $/mile figures are the objective part.</p>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li><strong>Your inputs are the ceiling.</strong> If your miles or hours are off, every result is off. The tool cannot read your platform account.</li>
+    <li><strong>Mileage splitting is proportional</strong>, not a per-day driving log. Keep a real mileage log for taxes.</li>
+    <li><strong>Floors are approximations at block level.</strong> Platforms apply Prop 22 over pay periods with top-up adjustments, NYC's standard through their trip-time accounting, and Seattle/WA per offer or trip. A block below the floor is a prompt to examine your pay statement, not proof of a violation.</li>
+    <li><strong>Local rules vary.</strong> A California city minimum wage above $16.90 changes the Prop 22 result (you can enter it); other local ordinances (e.g., other cities' delivery rules) are not yet covered.</li>
+    <li><strong>Rates change on a known calendar:</strong> IRS each December (and rarely mid-year, as in 2026), NYC each April 1, California and Washington each January 1. Pages carry a "verified" date so you can tell how fresh the constants are.</li>
+  </ul>
+
+  <div class="disclaimer">
+    <p style="margin:0;"><strong>Not advice.</strong> True Gig Pay is an estimating tool and general information resource. It is not tax, legal, or financial advice. For your taxes, talk to a qualified tax professional; for a pay dispute, your state or city labor agency (CA DIR, NYC DCWP, Seattle OLS, WA L&amp;I) is the authority.</p>
+  </div>
+
+  <div class="cta-box">
+    <p><strong>Run your numbers:</strong> <a href="index.html">open the calculator</a> with your last pay period's totals.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html">About &amp; Privacy</a>
+    </nav>
+    <p>True Gig Pay — estimates only; not tax or legal advice. Rates verified October 22, 2026.</p>
+  </div>
+</footer>
+</body>
+</html>

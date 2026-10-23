@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gig Driver Pay Calculator — Your True Hourly Rate After Expenses &amp; Taxes | True Gig Pay</title>
+<meta name="description" content="Free calculator for DoorDash, Uber Eats, Instacart and rideshare drivers: true $/hour after vehicle costs at the official 2026 IRS mileage rates, self-employment tax, plus CA Prop 22, NYC, Seattle and Washington pay-floor checks.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">T$</span> True Gig Pay</a>
+    <p class="brand-tag">What gig drivers actually keep — after miles, gas, and taxes.</p>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>Gig driver true-earnings calculator</h1>
+  <p class="lede">Your app shows gross pay. This calculator shows what you actually keep: enter a shift, a week, or a month of real numbers and see your true hourly rate after vehicle costs and self-employment tax — plus a check against the legal pay floor where you work.</p>
+  <p class="small">Everything runs in your browser. Nothing you type is sent anywhere or stored on a server. Rates verified October 22, 2026 — see the <a href="methodology.html">methodology page</a> for every source.</p>
+
+  <!-- ============ MAIN CALCULATOR ============ -->
+  <section class="tool-card" aria-labelledby="calc-h">
+    <h2 id="calc-h">1. Your true hourly rate</h2>
+    <form id="calc-form" novalidate>
+      <div class="grid">
+        <div class="field">
+          <label for="platform">Platform <span class="hint">Informational only — it changes labels, never the math. We don't guess your platform's pay rates; you enter your real totals.</span></label>
+          <select id="platform" name="platform">
+            <option value="DoorDash">DoorDash</option>
+            <option value="Uber Eats">Uber Eats</option>
+            <option value="Instacart">Instacart</option>
+            <option value="Other gig app">Other gig app</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="period">Period <span class="hint">Sets the start/end dates below. Dates matter in 2026 because the IRS mileage rate changed on July 1.</span></label>
+          <select id="period" name="period">
+            <option value="day">Single day</option>
+            <option value="week" selected>Week</option>
+            <option value="month">Month</option>
+            <option value="custom">Custom dates</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="start-date">Period start date</label>
+          <input type="date" id="start-date" name="start-date" required>
+        </div>
+        <div class="field">
+          <label for="end-date">Period end date</label>
+          <input type="date" id="end-date" name="end-date" required>
+        </div>
+        <div class="field">
+          <label for="gross">Gross pay for the period ($) <span class="hint">Everything the platform paid you, including tips, before any expenses.</span></label>
+          <input type="number" id="gross" name="gross" inputmode="decimal" min="0" step="any" required aria-describedby="err-gross">
+          <p class="field-error" id="err-gross" hidden></p>
+        </div>
+        <div class="field">
+          <label for="hours">Total hours worked <span class="hint">All time on the app/shift, including waiting. Use decimals (7.5 = 7½ hours).</span></label>
+          <input type="number" id="hours" name="hours" inputmode="decimal" min="0" step="any" required aria-describedby="err-hours">
+          <p class="field-error" id="err-hours" hidden></p>
+        </div>
+        <div class="field">
+          <label for="engaged-hours">Engaged / active hours (optional) <span class="hint">Time actually on a delivery or trip. Pay laws use engaged time, so this unlocks the per-engaged-hour rates.</span></label>
+          <input type="number" id="engaged-hours" name="engaged-hours" inputmode="decimal" min="0" step="any" aria-describedby="err-engaged">
+          <p class="field-error" id="err-engaged" hidden></p>
+        </div>
+        <div class="field">
+          <label for="miles">Total miles driven <span class="hint">All work miles for the period, including driving to pickups.</span></label>
+          <input type="number" id="miles" name="miles" inputmode="decimal" min="0" step="any" required aria-describedby="err-miles">
+          <p class="field-error" id="err-miles" hidden></p>
+        </div>
+        <div class="field">
+          <label for="trips">Deliveries / trips completed (optional)</label>
+          <input type="number" id="trips" name="trips" inputmode="numeric" min="0" step="1" aria-describedby="err-trips">
+          <p class="field-error" id="err-trips" hidden></p>
+        </div>
+        <div class="field">
+          <label for="ss-wages">Social Security wages already earned this year (optional) <span class="hint">W-2 wages plus other self-employment income. Only matters at high income — the Social Security part of SE tax stops at the $184,500 cap for 2026.</span></label>
+          <input type="number" id="ss-wages" name="ss-wages" inputmode="decimal" min="0" step="any" aria-describedby="err-sswages">
+          <p class="field-error" id="err-sswages" hidden></p>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Vehicle cost method</legend>
+        <div class="radio-row">
+          <label><input type="radio" name="vmode" value="irs" checked> IRS standard mileage</label>
+          <label><input type="radio" name="vmode" value="actual"> My actual costs</label>
+        </div>
+        <div id="irs-note">
+          <p class="small">2026 IRS rate: <strong>72.5¢ per mile</strong> for Jan 1–Jun 30 and <strong>76¢ per mile</strong> for Jul 1–Dec 31 (the IRS raised it mid-year). If your period crosses July 1, miles are split across both rates in proportion to the days on each side — an estimate, since the IRS cares about when each mile was actually driven. <a href="irs-mileage.html">Why there are two 2026 rates</a>.</p>
+        </div>
+        <div id="actual-fields" hidden>
+          <div class="grid">
+            <div class="field">
+              <label for="fuel-price">Fuel price ($ per gallon)</label>
+              <input type="number" id="fuel-price" name="fuel-price" inputmode="decimal" min="0" step="any" aria-describedby="err-fuel">
+              <p class="field-error" id="err-fuel" hidden></p>
+            </div>
+            <div class="field">
+              <label for="mpg">Your vehicle's MPG</label>
+              <input type="number" id="mpg" name="mpg" inputmode="decimal" min="0" step="any" aria-describedby="err-mpg">
+              <p class="field-error" id="err-mpg" hidden></p>
+            </div>
+            <div class="field span-2">
+              <label for="other-costs">Other vehicle costs for the period ($) (optional) <span class="hint">Oil, tires, repairs, car washes — whatever you want counted on top of fuel.</span></label>
+              <input type="number" id="other-costs" name="other-costs" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="error-summary" id="calc-errors" hidden role="alert"></div>
+      <button type="submit" class="btn">Calculate my true pay</button>
+    </form>
+
+    <div class="results" id="calc-results" hidden aria-live="polite">
+      <h3>Your results</h3>
+      <table class="result-table">
+        <tbody>
+          <tr><th scope="row">Gross pay per total hour</th><td id="r-gross-hr">—</td></tr>
+          <tr id="row-gross-engaged"><th scope="row">Gross pay per engaged hour</th><td id="r-gross-engaged-hr">—</td></tr>
+          <tr><th scope="row">Vehicle cost for the period</th><td id="r-vehicle">—</td></tr>
+          <tr><th scope="row" id="r-vehicle-note-label">How that vehicle cost was figured</th><td id="r-vehicle-note" style="font-weight:400; text-align:right;">—</td></tr>
+          <tr><th scope="row">Net after vehicle costs</th><td id="r-net">—</td></tr>
+          <tr><th scope="row">True net per total hour</th><td id="r-net-hr">—</td></tr>
+          <tr id="row-net-engaged"><th scope="row">True net per engaged hour</th><td id="r-net-engaged-hr">—</td></tr>
+          <tr id="row-per-trip"><th scope="row">Gross / net per delivery or trip</th><td id="r-per-trip">—</td></tr>
+          <tr><th scope="row">Self-employment tax estimate (period)</th><td id="r-se-tax">—</td></tr>
+          <tr><th scope="row">Set aside for taxes — per week</th><td id="r-set-week">—</td></tr>
+          <tr><th scope="row">Set aside for taxes — per quarter</th><td id="r-set-quarter">—</td></tr>
+        </tbody>
+      </table>
+      <div class="takehome">
+        <p style="margin:0;">Take-home summary: <span class="big" id="r-takehome">—</span></p>
+        <p class="small" id="r-takehome-note" style="margin:0.3rem 0 0;">That's gross pay minus vehicle costs minus the SE-tax estimate — before income tax, which depends on your whole tax picture. The set-aside figures scale this period's SE tax to a week/quarter; if this period isn't typical for you, treat them as a rough guide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAY-FLOOR CHECK ============ -->
+  <section class="tool-card" aria-labelledby="floor-h">
+    <h2 id="floor-h">2. Pay-floor check: did you clear the legal minimum?</h2>
+    <p>Some places guarantee app-based workers a minimum for <em>engaged</em> time and miles. Enter one block of work (a shift, a day, a pay period) and compare what you were paid against the floor for those same engaged hours and miles. This is an <strong>estimate and an informational check only — not legal advice</strong>, and not a determination that any law was broken; platform pay statements, top-ups, and local rules all matter.</p>
+    <form id="floor-form" novalidate>
+      <div class="grid">
+        <div class="field">
+          <label for="jurisdiction">Where the work was done</label>
+          <select id="jurisdiction" name="jurisdiction">
+            <option value="ca">California — Prop 22</option>
+            <option value="nyc">New York City — delivery</option>
+            <option value="seattle-app">Seattle, WA — app-based work (incl. delivery)</option>
+            <option value="wa-tnc-seattle">Washington — rideshare, trips starting in Seattle</option>
+            <option value="wa-tnc-outside">Washington — rideshare, outside Seattle</option>
+          </select>
+        </div>
+        <div class="field" id="ca-wage-field" >
+          <label for="ca-wage">Local CA minimum wage, if higher than $16.90 (optional) <span class="hint">Prop 22 uses your local wage (city/county) when it's above the state wage. Leave blank to use the 2026 statewide $16.90.</span></label>
+          <input type="number" id="ca-wage" name="ca-wage" inputmode="decimal" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="floor-engaged-hours">Engaged hours</label>
+          <input type="number" id="floor-engaged-hours" name="floor-engaged-hours" inputmode="decimal" min="0" step="any" required aria-describedby="err-floor-hours">
+          <p class="field-error" id="err-floor-hours" hidden></p>
+        </div>
+        <div class="field">
+          <label for="floor-engaged-miles">Engaged miles</label>
+          <input type="number" id="floor-engaged-miles" name="floor-engaged-miles" inputmode="decimal" min="0" step="any" required aria-describedby="err-floor-miles">
+          <p class="field-error" id="err-floor-miles" hidden></p>
+        </div>
+        <div class="field">
+          <label for="floor-trips">Deliveries / offers / trips in that block (optional) <span class="hint">Used by the Seattle and Washington floors, which include a per-offer/per-trip minimum.</span></label>
+          <input type="number" id="floor-trips" name="floor-trips" inputmode="numeric" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="floor-gross">What the platform paid for that block ($), before tips <span class="hint">Pay-floor guarantees generally don't count tips toward the minimum.</span></label>
+          <input type="number" id="floor-gross" name="floor-gross" inputmode="decimal" min="0" step="any" required aria-describedby="err-floor-gross">
+          <p class="field-error" id="err-floor-gross" hidden></p>
+        </div>
+      </div>
+      <div class="error-summary" id="floor-errors" hidden role="alert"></div>
+      <button type="submit" class="btn">Check against the floor</button>
+    </form>
+    <div class="results" id="floor-results" hidden aria-live="polite">
+      <h3>Floor check result</h3>
+      <table class="result-table">
+        <tbody>
+          <tr><th scope="row" id="floor-name-label">Estimated legal floor</th><td id="f-floor">—</td></tr>
+          <tr><th scope="row">What you were paid (before tips)</th><td id="f-actual">—</td></tr>
+          <tr><th scope="row">Difference</th><td id="f-diff">—</td></tr>
+        </tbody>
+      </table>
+      <p class="verdict" id="f-verdict"></p>
+      <p class="small" id="f-note"></p>
+    </div>
+  </section>
+
+  <!-- ============ OFFER QUICK-CHECK ============ -->
+  <section class="tool-card" aria-labelledby="offer-h">
+    <h2 id="offer-h">3. Offer quick-check</h2>
+    <p>Got an offer on screen? Three numbers tell you what it's really worth per hour, after the drive eats its share.</p>
+    <form id="offer-form" novalidate>
+      <div class="grid">
+        <div class="field">
+          <label for="offer-pay">Offer pay ($)</label>
+          <input type="number" id="offer-pay" name="offer-pay" inputmode="decimal" min="0" step="any" required aria-describedby="err-offer-pay">
+          <p class="field-error" id="err-offer-pay" hidden></p>
+        </div>
+        <div class="field">
+          <label for="offer-miles">Total miles</label>
+          <input type="number" id="offer-miles" name="offer-miles" inputmode="decimal" min="0" step="any" required aria-describedby="err-offer-miles">
+          <p class="field-error" id="err-offer-miles" hidden></p>
+        </div>
+        <div class="field">
+          <label for="offer-minutes">Estimated minutes</label>
+          <input type="number" id="offer-minutes" name="offer-minutes" inputmode="decimal" min="0" step="any" required aria-describedby="err-offer-minutes">
+          <p class="field-error" id="err-offer-minutes" hidden></p>
+        </div>
+      </div>
+      <div class="error-summary" id="offer-errors" hidden role="alert"></div>
+      <button type="submit" class="btn">Check this offer</button>
+    </form>
+    <div class="results" id="offer-results" hidden aria-live="polite">
+      <h3>Offer math</h3>
+      <table class="result-table">
+        <tbody>
+          <tr><th scope="row">Pay per hour (before vehicle costs)</th><td id="o-gross-hr">—</td></tr>
+          <tr><th scope="row">Pay per mile</th><td id="o-per-mile">—</td></tr>
+          <tr><th scope="row">Vehicle cost of this offer (IRS rate)</th><td id="o-vehicle">—</td></tr>
+          <tr><th scope="row">Net per hour after vehicle cost</th><td id="o-net-hr">—</td></tr>
+        </tbody>
+      </table>
+      <p class="verdict" id="o-verdict"></p>
+      <p class="small" id="o-note"></p>
+    </div>
+  </section>
+
+  <div class="constants" role="note">
+    <h2>The rates behind this tool (verified October 22, 2026)</h2>
+    <ul>
+      <li><strong>IRS mileage, 2026:</strong> 72.5¢/mi (Jan 1–Jun 30), 76¢/mi (Jul 1–Dec 31) — IRS.</li>
+      <li><strong>Self-employment tax:</strong> 15.3% on 92.35% of net profit; Social Security wage base $184,500 for 2026 — IRS / SSA.</li>
+      <li><strong>California Prop 22:</strong> 120% of the minimum wage per engaged hour + $0.37 per engaged mile (2026) — CA DIR / CA State Treasurer.</li>
+      <li><strong>New York City:</strong> $22.13 per hour of trip time, before tips, from April 1, 2026 — NYC DCWP.</li>
+      <li><strong>Seattle:</strong> $0.47/min + $0.80/mile, $5.34 minimum per offer (2026) — Seattle Office of Labor Standards.</li>
+      <li><strong>Washington rideshare:</strong> from Jan 1, 2026 — $0.70/min + $1.63/mile or $6.12/trip (trips starting in Seattle); $0.40/min + $1.38/mile or $3.55/trip (outside Seattle) — WA L&amp;I.</li>
+    </ul>
+    <p style="margin-bottom:0;">Full sources and formulas: <a href="methodology.html">Methodology</a>.</p>
+  </div>
+
+  <div class="disclaimer">
+    <p style="margin:0;"><strong>Estimates only.</strong> True Gig Pay provides general information and estimates — it is not tax, legal, or financial advice, and it can't see your platform's actual pay statements or your full tax situation. Platform pay varies by market, offer, and week. For decisions that matter, check your pay statements and talk to a qualified tax professional or attorney.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="prop-22.html">Prop 22 (CA)</a>
+      <a href="nyc-pay.html">NYC Pay Floor</a>
+      <a href="irs-mileage.html">2026 IRS Mileage</a>
+      <a href="about.html">About &amp; Privacy</a>
+    </nav>
+    <p>True Gig Pay — a free driver-built-math reference. Estimates only; not tax or legal advice. Rates verified October 22, 2026.</p>
+  </div>
+</footer>
+
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
